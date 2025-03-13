@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: indigo-muse-452811-u7
+    schema: ny_taxi
+
+    tables:
+      - name: green_tripdata_main
+      - name: yellow_tripdata_main
