@@ -1,8 +1,4 @@
-{{
-    config(
-        materialized='table'
-    )
-}}
+
 
 WITH fhv_trip AS (
     SELECT 
