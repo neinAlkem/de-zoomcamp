@@ -8,6 +8,7 @@ sources:
     tables:
       - name: green_tripdata_main
       - name: yellow_tripdata_main
+      - name: fhv
 
 models:
   - name: stg_green_tripdata
