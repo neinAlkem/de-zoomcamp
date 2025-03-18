@@ -21,4 +21,4 @@ SELECT
 FROM fhv_trip
 JOIN zone
     ON fhv_trip.PULocationID = zone.zone_locationid
-    AND fhv_trip.DOLocationID = zone.zone_locationid;
+    AND fhv_trip.DOLocationID = zone.zone_locationid
