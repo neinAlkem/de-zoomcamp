@@ -7,7 +7,7 @@ WITH fhv_trip AS (
         EXTRACT(month FROM pickup_datetime) AS month
     FROM {{ ref('stg_fhv') }}
 ),
-zone AS (
+zones AS (
     SELECT 
         *,
 
@@ -16,9 +16,9 @@ zone AS (
 
 SELECT 
     fhv_trip.*, 
-    zone.*,      
+    zones.*,      
 FROM fhv_trip
-JOIN zone pu
-    ON fhv_trip.PULocationID = pu.locationid
-JOIN zone do
-    on fhv_trip.DOLocationID = do.locationid
+JOIN zones pickup
+    ON fhv_trip.PULocationID = pickup.locationid
+JOIN zones dropoff
+    on fhv_trip.DOLocationID = dropoff.locationid
