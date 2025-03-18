@@ -10,15 +10,15 @@ WITH fhv_trip AS (
 zone AS (
     SELECT 
         *,
-        locationid AS zone_locationid  -- Rename locationid to zone_locationid in zone CTE
+
     FROM {{ ref('dim_zones') }}
 )
 
 SELECT 
-    fhv_trip.*,  -- Select all columns from fhv_trip
-    zone.*,      -- Select all columns from zone, which now has zone_locationid instead of locationid
-    zone.zone_locationid AS zone_locationid  -- Explicitly select the renamed locationid
+    fhv_trip.*, 
+    zone.*,      
 FROM fhv_trip
-JOIN zone
-    ON fhv_trip.PULocationID = zone.zone_locationid
-    AND fhv_trip.DOLocationID = zone.zone_locationid
+JOIN zone pu
+    ON fhv_trip.PULocationID = pu.locationid
+JOIN zone do
+    on fhv_trip.DOLocationID = do.locationid
